@@ -4,10 +4,23 @@ import { useUser } from "@/providers/user-provider";
 import { UserDetails } from '@/components/dashboard/user-details'
 import { TextShimmer } from "@/components/motion-primitives/text-shimmer";
 import AuthWidget from "@/components/auth/auth-popover";
+import { useEffect } from "react";
+import { useRouter } from "next/navigation";
 
 export default function ProjectsPage() {
   const { user } = useUser();
-  console.log('user: ', user);
+  const router = useRouter();
+
+  useEffect(() => {
+    // Redirect based on user role
+    if (user?.role === 'admin') {
+      router.push('/admin');
+    } else if (user?.role === 'employer') {
+      router.push('/employer');
+    } else if (user?.role === 'candidate') {
+      router.push('/candidate');
+    }
+  }, [user?.role, router]);
 
   if (!user) {
     return <AuthWidget isOpen={true} setIsOpen={() => {}} user={null} />

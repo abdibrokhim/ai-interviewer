@@ -35,6 +35,11 @@ export function UserProvider({
   // Setup new user on the server 
   const setupNewUser = async () => {
     try {
+      // Prefetch CSRF cookie so POST will include valid token
+      try {
+        await fetch('/api/csrf', { method: 'GET', credentials: 'include' })
+      } catch {}
+
       const response = await fetch('/api/auth/setup', {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },

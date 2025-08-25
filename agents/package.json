@@ -1,0 +1,26 @@
+{
+  "name": "@ai-interviewer/agents",
+  "version": "1.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "tsx watch src/index.ts",
+    "build": "tsc",
+    "test": "jest"
+  },
+  "dependencies": {
+    "@openai/agents": "^0.1.0",
+    "@google/genai": "^1.0.0",
+    "zod": "^3.23.8",
+    "@supabase/supabase-js": "^2.45.0",
+    "judge0-api": "^1.0.0",
+    "face-api.js": "^0.22.2",
+    "@tensorflow/tfjs-node": "^4.20.0"
+  },
+  "devDependencies": {
+    "@types/node": "^20.0.0",
+    "typescript": "^5.0.0",
+    "tsx": "^4.0.0",
+    "jest": "^29.0.0",
+    "@types/jest": "^29.0.0"
+  }
+}
